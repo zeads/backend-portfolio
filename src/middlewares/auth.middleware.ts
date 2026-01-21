@@ -3,12 +3,13 @@ import jwt from "jsonwebtoken";
 import { AppError } from "../utils/errorHandler";
 
 // Extend Request interface untuk menyimpan data user
-export interface AuthRequest extends Request {
-  user?: any;
-}
+// export interface AuthRequest extends Request {
+//   user?: any;
+// }
 
 export const protect = async (
-  req: AuthRequest,
+  // req: AuthRequest,
+  req: Request,
   res: Response,
   next: NextFunction,
 ) => {
