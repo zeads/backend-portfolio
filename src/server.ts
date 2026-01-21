@@ -1,10 +1,11 @@
 import express from "express";
 import db from "./config/db";
+import projectRouter from "./routes/project.route";
 
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-const dbStatus = async () => {
+const dbStart = async () => {
   try {
     await db();
     console.log("Database connected!");
@@ -13,9 +14,10 @@ const dbStatus = async () => {
   }
 };
 
-dbStatus();
+dbStart();
 
 app.use(express.json());
+app.use("/api/projects", projectRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
